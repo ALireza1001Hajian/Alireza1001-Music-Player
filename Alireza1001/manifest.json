@@ -1,0 +1,21 @@
+{
+  "name": "Alireza1001 Music Player",
+  "short_name": "Alireza1001",
+  "description": "پخش موسیقی حرفه‌ای و اختصاصی",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0a14",
+  "theme_color": "#427aeb",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
