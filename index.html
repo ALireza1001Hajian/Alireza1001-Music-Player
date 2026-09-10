@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alireza1001 | Music Player</title>
-    <link rel="manifest" href="manifest.json">
     <meta name="description" content="موزیک پلیر Alireza1001">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23427aeb'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='18' font-weight='bold' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+
+        /* ========== متغیرهای ریشه ========== */
         :root {
             --primary: #427aeb;
             --primary-light: #6b9aff;
@@ -58,6 +59,7 @@
             --gradient-hero: linear-gradient(135deg, #0a1a3a 0%, #2f5fc9 30%, #427aeb 60%, #6b9aff 100%);
         }
 
+        /* ========== استایل‌های عمومی ========== */
         * {
             margin: 0;
             padding: 0;
@@ -125,8 +127,7 @@
             opacity: 0.2;
         }
         @keyframes orbFloat {
-            0%,
-            100% {
+            0%, 100% {
                 transform: translate(0, 0) scale(1);
             }
             25% {
@@ -175,6 +176,7 @@
             }
         }
 
+        /* ========== هدر ========== */
         .header {
             position: fixed;
             top: 0;
@@ -216,6 +218,8 @@
             display: inline-flex;
             align-items: center;
             transition: var(--transition);
+            font-family: var(--font-en);
+            gap: 8px;
         }
         .header-logo:hover {
             transform: scale(1.03);
@@ -227,7 +231,7 @@
             height: 8px;
             background: var(--primary-light);
             border-radius: 50%;
-            margin: 0 6px;
+            margin: 0;
             animation: pulseDot 2s infinite;
         }
         .header-logo .logo-dot:first-child {
@@ -237,8 +241,7 @@
             margin-left: 0;
         }
         @keyframes pulseDot {
-            0%,
-            100% {
+            0%, 100% {
                 box-shadow: 0 0 0 0 var(--primary-glow);
             }
             50% {
@@ -360,6 +363,7 @@
             cursor: pointer;
         }
 
+        /* ========== بخش Hero ========== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -508,6 +512,7 @@
             }
         }
 
+        /* ========== بخش پلیر ========== */
         .player-section {
             padding: 60px 32px 40px;
             max-width: 900px;
@@ -569,8 +574,7 @@
             animation: albumPulse 3s infinite ease-in-out;
         }
         @keyframes albumPulse {
-            0%,
-            100% {
+            0%, 100% {
                 box-shadow: 0 0 0 0 rgba(66, 122, 235, 0.3);
             }
             50% {
@@ -691,6 +695,11 @@
             color: var(--text-muted);
             margin-top: 6px;
         }
+        .progress-bar-wrapper:focus-visible,
+.volume-slider:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+}
 
         .player-controls {
             display: flex;
@@ -733,6 +742,17 @@
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
+        }
+
+        .btn-speed {
+            font-family: var(--font-en);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .btn-speed #speedLabel {
+            display: inline-block;
+            min-width: 30px;
+            text-align: center;
         }
 
         .btn-play-main {
@@ -826,6 +846,7 @@
             display: none;
         }
 
+        /* ========== پلی‌لیست ========== */
         .playlist {
             margin-top: 8px;
             border-top: 1px solid var(--border);
@@ -948,40 +969,40 @@
             justify-content: center;
             opacity: 1;
         }
-    .playlist-item-like {
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
-    border: none;
-    background: transparent;
-    color: var(--text-muted);
-    cursor: pointer;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 1; /* همیشه نمایان */
-    transition: var(--transition);
-}
-.playlist-item-like:hover {
-    background: rgba(239, 68, 68, 0.15);
-    color: #ef4444;
-}
-.playlist-item-like.liked {
-    color: #ef4444;
-}
-.playlist-item-like.liked svg {
-    fill: #ef4444;
-}
-.playlist-item-like svg {
-    width: 16px;
-    height: 16px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
+        .playlist-item-like {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: var(--transition);
+        }
+        .playlist-item-like:hover {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+        .playlist-item-like.liked {
+            color: #ef4444;
+        }
+        .playlist-item-like.liked svg {
+            fill: #ef4444;
+        }
+        .playlist-item-like svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
         .playlist-item:hover .playlist-item-remove {
             opacity: 1;
         }
@@ -1013,6 +1034,7 @@
             margin-bottom: 8px;
         }
 
+        /* ========== فوتر ========== */
         .footer {
             background: var(--bg-secondary);
             border-top: 1px solid var(--border);
@@ -1034,6 +1056,7 @@
             color: transparent;
             margin-bottom: 16px;
             display: inline-block;
+            font-family: var(--font-en);
         }
         .footer-logo .logo-dot {
             display: inline-block;
@@ -1078,6 +1101,7 @@
             text-decoration: none;
         }
 
+        /* ========== Toast ========== */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -1124,22 +1148,61 @@
             color: var(--primary-light);
         }
 
+        /* ========== ویژوالایزر (ساده) ========== */
         .visualizer {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 3px;
-            height: 40px;
-            margin-top: 12px;
+            gap: 2px;
+            height: 50px;
+            margin-top: 16px;
+            overflow: hidden;
         }
         .visualizer-bar {
-            width: 4px;
-            height: 6px;
-            background: var(--primary);
-            border-radius: 3px;
-            transition: height 0.05s linear;
+            width: 3px;
+            min-height: 3px;
+            background: linear-gradient(to top, var(--primary-dark), var(--primary-light));
+            border-radius: 2px 2px 0 0;
+            box-shadow: 0 0 6px var(--primary-glow);
+            transition: height 0.08s ease-out;
         }
 
+        /* ========== Drop Overlay (فقط یک نسخه) ========== */
+        .drop-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 10;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            border-radius: var(--radius-lg);
+        }
+        .drop-overlay.active {
+            display: flex;
+        }
+        .drop-overlay-content {
+            text-align: center;
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+        .drop-overlay-content svg {
+            color: var(--primary-light);
+            filter: drop-shadow(0 0 20px var(--primary-glow));
+        }
+
+        /* ========== Media Queries ========== */
         @media (max-width: 768px) {
             .header {
                 padding: 12px 16px;
@@ -1226,56 +1289,6 @@
         audio {
             display: none;
         }
-.drop-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    z-index: 10;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    border-radius: var(--radius-lg);
-}
-.drop-overlay.active {
-    display: flex;
-}
-.drop-overlay-content {
-    text-align: center;
-    color: #fff;
-    font-size: 1.4rem;
-    font-weight: 600;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-}
-.drop-overlay-content svg {
-    color: var(--primary-light);
-    filter: drop-shadow(0 0 20px var(--primary-glow));
-}
-.drop-overlay.active {
-    display: flex;
-}
-.drop-overlay-content {
-    text-align: center;
-    color: #fff;
-    font-size: 1.4rem;
-    font-weight: 600;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-}
-.drop-overlay-content svg {
-    color: var(--primary-light);
-    filter: drop-shadow(0 0 20px var(--primary-glow));
-}
         ::selection {
             background: var(--primary);
             color: #fff;
@@ -1310,7 +1323,7 @@
 
     <header class="header" id="header">
         <div class="header-inner">
-            <a class="header-logo" href="#" id="logoText"><span class="logo-dot"></span><span id="headerBrand">Alireza1001</span><span class="logo-dot"></span></a>
+            <a class="header-logo" href="#" id="logoText" dir="ltr"><span class="logo-dot"></span><span id="headerBrand">Alireza1001</span><span class="logo-dot"></span></a>
             <div class="header-controls">
                 <button class="btn-icon" id="themeToggle" title="تغییر حالت رنگی" aria-label="تغییر حالت رنگی">
                     <svg id="themeIconSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -1329,7 +1342,7 @@
                         <div class="color-swatch" style="background:#3498db;" data-color="#3498db"></div>
                         <div class="color-swatch" style="background:#f1c40f;" data-color="#f1c40f"></div>
                     </div>
-                    <div class="color-input-row"><span>انتخاب رنگ:</span><input type="color" id="customColorInput" value="#427aeb"></div>
+                    <div class="color-input-row"><span id="colorPickerLabel">انتخاب رنگ:</span><input type="color" id="customColorInput" value="#427aeb"></div>
                 </div>
             </div>
         </div>
@@ -1357,7 +1370,19 @@
             </div>
 
             <div class="progress-container">
-                <div class="progress-bar-wrapper" id="progressWrapper"><div class="progress-bar-fill" id="progressFill"></div></div>
+                <div
+    class="progress-bar-wrapper"
+    id="progressWrapper"
+    tabindex="0"
+    role="slider"
+    aria-label="موقعیت پخش"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow="0"
+    aria-valuetext="0:00"
+>
+    <div class="progress-bar-fill" id="progressFill"></div>
+</div>
                 <div class="progress-time"><span id="currentTime">0:00</span><span id="totalTime">0:00</span></div>
             </div>
 
@@ -1369,21 +1394,26 @@
                 <button class="btn-player" id="btnNext" title="بعدی" aria-label="بعدی"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg></button>
                 <button class="btn-player" id="btnShuffle" title="پخش تصادفی" aria-label="پخش تصادفی"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></button>
                 <button class="btn-player" id="btnRepeat" title="تکرار" aria-label="تکرار"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></button>
+                <button class="btn-player btn-speed" id="btnSpeed" title="سرعت پخش" aria-label="سرعت پخش">
+                    <span id="speedLabel">1x</span>
+                </button>
             </div>
 
             <div class="volume-container">
                 <span class="volume-icon" id="volumeIcon" title="کلیک برای قطع/وصل صدا"><svg id="volumeSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span>
-                <div class="volume-slider" id="volumeSlider"><div class="volume-fill" id="volumeFill"></div></div>
+                <div class="volume-slider" id="volumeSlider" tabindex="0" role="slider" aria-label="میزان صدا" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+    <div class="volume-fill" id="volumeFill"></div>
+</div>
             </div>
 
             <div class="playlist" id="playlist">
-                <!-- Drop overlay (inside player) -->
-<div id="dropOverlay" class="drop-overlay">
-    <div class="drop-overlay-content">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-        <p id="dropOverlayText">فایل‌های صوتی را اینجا رها کنید</p>
-    </div>
-</div>
+                <!-- Drop overlay (فقط یک نسخه داخل پلیر) -->
+                <div id="dropOverlay" class="drop-overlay">
+                    <div class="drop-overlay-content">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        <p id="dropOverlayText">فایل‌های صوتی را اینجا رها کنید</p>
+                    </div>
+                </div>
                 <div class="playlist-header"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span id="playlistTitle">پلی‌لیست شما</span><span id="playlistCount" style="margin-inline-start:auto;font-size:0.75rem;color:var(--text-muted);">0 آهنگ</span></div>
                 <div id="playlistItems">
                     <div class="playlist-empty" id="playlistEmpty"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><p id="playlistEmptyText">هنوز آهنگی آپلود نکرده‌اید. از دکمه «آپلود آهنگ» استفاده کنید.</p></div>
@@ -1405,337 +1435,369 @@
     </footer>
 
     <audio id="audioPlayer"></audio>
-<!-- Drop overlay -->
-<div id="dropOverlay" class="drop-overlay">
-    <div class="drop-overlay-content">
-        <svg ...>...</svg>
-        <p>فایل‌های صوتی را اینجا رها کنید</p>
-    </div>
-</div>
+    
+        <script>
+(function() {
+    const state = {
+        lang: 'fa',
+        theme: 'light',
+        tracks: [],
+        currentIndex: -1,
+        isPlaying: false,
+        isShuffle: false,
+        repeatMode: 0,
+        volume: 1.0,
+        lastVolume: 1.0,
+        playbackRate: 1.0,
+        currentTime: 0,
+        customColor: '#427aeb',
+        savedTrackId: null,
+        shufflePlayed: []
+    };
 
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js')
-                .then(reg => console.log('SW registered'))
-                .catch(err => console.log('SW registration failed:', err));
-        });
-    }
-</script>
+    const $ = (sel) => document.querySelector(sel);
+    const header = $('#header');
+    const headerBrand = $('#headerBrand');
+    const themeToggle = $('#themeToggle');
+    const themeIconSvg = $('#themeIconSvg');
+    const langToggle = $('#langToggle');
+    const langIcon = $('#langIcon');
+    const colorToggle = $('#colorToggle');
+    const colorPanel = $('#colorPanel');
+    const colorSwatches = $('#colorSwatches');
+    const customColorInput = $('#customColorInput');
+    const heroTitle1 = $('#heroTitle1');
+    const heroTitle2 = $('#heroTitle2');
+    const heroSubtitle = $('#heroSubtitle');
+    const heroBadgeText = $('#heroBadgeText');
+    const heroBtnPrimary = $('#heroBtnPrimary');
+    const scrollToPlayer = $('#scrollToPlayer');
+    const playerSection = $('#playerSection');
+    const playerCard = $('#playerCard');
+    const albumArt = $('#albumArt');
+    const trackName = $('#trackName');
+    const trackArtist = $('#trackArtist');
+    const uploadLabel = $('#uploadLabel');
+    const uploadText = $('#uploadText');
+    const fileInput = $('#fileInput');
+    const progressWrapper = $('#progressWrapper');
+    const progressFill = $('#progressFill');
+    const currentTimeEl = $('#currentTime');
+    const totalTimeEl = $('#totalTime');
+    const btnPlay = $('#btnPlay');
+    const btnPrev = $('#btnPrev');
+    const btnNext = $('#btnNext');
+    const btnShuffle = $('#btnShuffle');
+    const btnRepeat = $('#btnRepeat');
+    const btnSpeed = $('#btnSpeed');
+    const speedLabel = $('#speedLabel');
+    const volumeIcon = $('#volumeIcon');
+    const volumeSvg = $('#volumeSvg');
+    const volumeSlider = $('#volumeSlider');
+    const volumeFill = $('#volumeFill');
+    const playlistItems = $('#playlistItems');
+    const playlistTitle = $('#playlistTitle');
+    const playlistCount = $('#playlistCount');
+    const visualizer = $('#visualizer');
+    const audioPlayer = $('#audioPlayer');
+    const toast = $('#toast');
+    const toastMessage = $('#toastMessage');
+    const toastIcon = $('#toastIcon');
+    const footerQuote1 = $('#footerQuote1');
+    const footerQuote2 = $('#footerQuote2');
+    const footerBottom = $('#footerBottom');
+    const particlesContainer = $('#particles');
+    const dropOverlay = $('#dropOverlay');
+    const dropOverlayText = $('#dropOverlayText');
 
-    <script>
-        (function() {
-            const state = {
-                lang: 'fa',
-                theme: 'light',
-                tracks: [],
-                currentIndex: -1,
-                isPlaying: false,
-                isShuffle: false,
-                isRepeat: false,
-                volume: 1.0,
-                currentTime: 0,
-                customColor: '#427aeb',
-                savedTime: 0,
-                savedIndex: -1,
-            };
+    let audioContext = null;
+    let analyser = null;
+    let source = null;
+    let animationFrameId = null;
+    let visualizerBars = [];
+    let visualizerPrevHeights = [];
+    let visualizerDataArray = null;
+    let dragCounter = 0;
+    const removingIds = new Set();
 
-            const $ = (sel) => document.querySelector(sel);
-            const $$ = (sel) => document.querySelectorAll(sel);
-            const header = $('#header');
-            const headerBrand = $('#headerBrand');
-            const themeToggle = $('#themeToggle');
-            const themeIconSvg = $('#themeIconSvg');
-            const langToggle = $('#langToggle');
-            const langIcon = $('#langIcon');
-            const colorToggle = $('#colorToggle');
-            const colorPanel = $('#colorPanel');
-            const colorSwatches = $('#colorSwatches');
-            const customColorInput = $('#customColorInput');
-            const heroTitle1 = $('#heroTitle1');
-            const heroTitle2 = $('#heroTitle2');
-            const heroSubtitle = $('#heroSubtitle');
-            const heroBadgeText = $('#heroBadgeText');
-            const heroBtnPrimary = $('#heroBtnPrimary');
-            const scrollToPlayer = $('#scrollToPlayer');
-            const playerSection = $('#playerSection');
-            const playerCard = $('#playerCard');
-            const albumArt = $('#albumArt');
-            const trackName = $('#trackName');
-            const trackArtist = $('#trackArtist');
-            const uploadLabel = $('#uploadLabel');
-            const uploadText = $('#uploadText');
-            const fileInput = $('#fileInput');
-            const progressWrapper = $('#progressWrapper');
-            const progressFill = $('#progressFill');
-            const currentTimeEl = $('#currentTime');
-            const totalTimeEl = $('#totalTime');
-            const btnPlay = $('#btnPlay');
-            const btnPrev = $('#btnPrev');
-            const btnNext = $('#btnNext');
-            const btnShuffle = $('#btnShuffle');
-            const btnRepeat = $('#btnRepeat');
-            const volumeIcon = $('#volumeIcon');
-            const volumeSvg = $('#volumeSvg');
-            const volumeSlider = $('#volumeSlider');
-            const volumeFill = $('#volumeFill');
-            const playlistItems = $('#playlistItems');
-            const playlistEmpty = $('#playlistEmpty');
-            const playlistEmptyText = $('#playlistEmptyText');
-            const playlistTitle = $('#playlistTitle');
-            const playlistCount = $('#playlistCount');
-            const visualizer = $('#visualizer');
-            const audioPlayer = $('#audioPlayer');
-            const toast = $('#toast');
-            const toastMessage = $('#toastMessage');
-            const toastIcon = $('#toastIcon');
-            const footerQuote1 = $('#footerQuote1');
-            const footerQuote2 = $('#footerQuote2');
-            const footerBottom = $('#footerBottom');
-            const particlesContainer = $('#particles');
-            const dropOverlay = $('#dropOverlay');
-            const dropOverlayText = $('#dropOverlayText');
-
-            // Web Audio API
-            let audioContext = null;
-            let analyser = null;
-            let source = null;
-            let animationFrameId = null;
-            let visualizerBars = [];
-            let dragCounter = 0;
-
-            function initAudioContext() {
-                if (!audioContext) {
-                    audioContext = new(window.AudioContext || window.webkitAudioContext)();
-                    analyser = audioContext.createAnalyser();
-                    analyser.fftSize = 256;
-                    source = audioContext.createMediaElementSource(audioPlayer);
-                    source.connect(analyser);
-                    analyser.connect(audioContext.destination);
-                }
-            }
-
-            function updateVisualizer() {
-                if (!analyser) return;
-                const dataArray = new Uint8Array(analyser.frequencyBinCount);
-                analyser.getByteFrequencyData(dataArray);
-                const bars = visualizerBars.length;
-                const step = Math.floor(dataArray.length / bars);
-                const center = (bars - 1) / 2;
-                const maxDistance = center;
-                for (let i = 0; i < bars; i++) {
-                    const start = i * step;
-                    const end = start + step;
-                    let sum = 0;
-                    for (let j = start; j < end; j++) {
-                        sum += dataArray[j];
-                    }
-                    const avg = sum / (end - start);
-                    const distance = Math.abs(i - center);
-                    const weight = 1 - (distance / maxDistance) * 0.7;
-                    const height = (avg / 255) * 36 * weight + 2;
-                    visualizerBars[i].style.height = `${height}px`;
-                }
-            }
-
-            function startVisualizerLoop() {
-                if (animationFrameId) return;
-                function frame() {
-                    updateVisualizer();
-                    animationFrameId = requestAnimationFrame(frame);
-                }
-                frame();
-            }
-
-            function stopVisualizerLoop() {
-                if (animationFrameId) {
-                    cancelAnimationFrame(animationFrameId);
-                    animationFrameId = null;
-                }
-            }
-
-            function buildVisualizerBars(count = 24) {
-                visualizer.innerHTML = '';
-                visualizerBars = [];
-                for (let i = 0; i < count; i++) {
-                    const bar = document.createElement('div');
-                    bar.className = 'visualizer-bar';
-                    visualizer.appendChild(bar);
-                    visualizerBars.push(bar);
-                }
-            }
-
-            function createParticles() {
-                for (let i = 0; i < 25; i++) {
-                    const p = document.createElement('div');
-                    p.className = 'particle';
-                    p.style.left = `${Math.random()*100}%`;
-                    p.style.animationDuration = `${10+Math.random()*20}s`;
-                    p.style.animationDelay = `${-Math.random()*20}s`;
-                    p.style.width = `${2+Math.random()*3}px`;
-                    p.style.height = p.style.width;
-                    p.style.opacity = `${0.3+Math.random()*0.4}`;
-                    particlesContainer.appendChild(p);
-                }
-            }
-
-            let previewAudio = null;
-            let previewTimeout = null;
-            let previousTrackState = { playing: false, src: '', time: 0 };
-
-            const translations = {
-                fa: {
-                    headerBrand: 'Alireza1001',
-                    heroBadge: 'پخش موسیقی حرفه‌ای و اختصاصی',
-                    heroTitle1: 'تجربه‌ای متفاوت از',
-                    heroTitle2: 'موسیقی',
-                    heroSubtitle: 'آهنگ‌های خود را آپلود کنید، پلی‌لیست بسازید و از پخش با کیفیت بالا لذت ببرید.',
-                    heroBtnPrimary: 'شروع پخش موسیقی',
-                    trackNone: 'آهنگی انتخاب نشده',
-                    trackNoneArtist: 'برای شروع، فایل صوتی آپلود کنید',
-                    upload: 'آپلود آهنگ',
-                    playlistTitle: 'پلی‌لیست شما',
-                    playlistEmptyText: 'هنوز آهنگی آپلود نکرده‌اید. از دکمه «آپلود آهنگ» استفاده کنید.',
-                    fq1: '⚡️ در سکوت می‌سازم، دقیق می‌بینم، عمیق حرکت می‌کنم ⚡️',
-                    fq2: 'ساخته شده با ❤️ از طرف Alireza1001',
-                    footerBottom: '© 2026 Alireza1001 — تمامی حقوق محفوظ است.',
-                    toastUploadSuccess: 'آهنگ با موفقیت آپلود شد!',
-                    toastUploadError: 'خطا در آپلود فایل. لطفاً فایل صوتی معتبر انتخاب کنید.',
-                    dropOverlayText: 'فایل‌های صوتی را اینجا رها کنید',
-                    toastPlay: 'در حال پخش:',
-                    toastPause: 'پخش متوقف شد',
-                    toastNoTrack: 'ابتدا یک آهنگ آپلود کنید.',
-                    toastVolume: 'میزان صدا:',
-                    toastShuffleOn: 'پخش تصادفی فعال شد',
-                    toastShuffleOff: 'پخش تصادفی غیرفعال شد',
-                    toastRepeatOn: 'تکرار فعال شد',
-                    toastRepeatOff: 'تکرار غیرفعال شد',
-                    trackCount: 'آهنگ',
-                    shuffleTitle: 'پخش تصادفی',
-                    repeatTitle: 'تکرار',
-                    prevTitle: 'قبلی',
-                    nextTitle: 'بعدی',
-                    themeTitle: 'تغییر حالت رنگی',
-                    langTitle: 'Change Language',
-                    colorTitle: 'پالت رنگی',
-                },
-                en: {
-                    headerBrand: 'Alireza1001',
-                    heroBadge: 'Professional & Personal Music Player',
-                    heroTitle1: 'A Different Experience of',
-                    heroTitle2: 'Music',
-                    heroSubtitle: 'Upload your songs, build playlists, and enjoy high-quality playback.',
-                    heroBtnPrimary: 'Start Playing Music',
-                    trackNone: 'No track selected',
-                    trackNoneArtist: 'Upload an audio file to start',
-                    upload: 'Upload Track',
-                    playlistTitle: 'Your Playlist',
-                    playlistEmptyText: 'No songs uploaded yet. Use the "Upload Track" button.',
-                    fq1: '⚡️ I build in silence, see precisely, move deeply ⚡️',
-                    fq2: 'Made with ❤️ by Alireza1001',
-                    footerBottom: '© 2026 Alireza1001 — All rights reserved.',
-                    toastUploadSuccess: 'Track uploaded successfully!',
-                    toastUploadError: 'Upload error. Please select a valid audio file.',
-                    dropOverlayText: 'Drop audio files here',
-                    toastPlay: 'Now playing:',
-                    toastPause: 'Playback paused',
-                    toastNoTrack: 'Please upload a track first.',
-                    toastVolume: 'Volume:',
-                    toastShuffleOn: 'Shuffle enabled',
-                    toastShuffleOff: 'Shuffle disabled',
-                    toastRepeatOn: 'Repeat enabled',
-                    toastRepeatOff: 'Repeat disabled',
-                    trackCount: 'tracks',
-                    shuffleTitle: 'Shuffle',
-                    repeatTitle: 'Repeat',
-                    prevTitle: 'Previous',
-                    nextTitle: 'Next',
-                    themeTitle: 'Toggle Theme',
-                    langTitle: 'تغییر زبان',
-                    colorTitle: 'Color Palette',
-                }
-            };
-
-            function t(key) { return translations[state.lang][key] || key; }
-
-            function formatTime(seconds) {
-                if (isNaN(seconds) || seconds < 0) return '0:00';
-                const m = Math.floor(seconds / 60);
-                const s = Math.floor(seconds % 60);
-                return `${m}:${s.toString().padStart(2, '0')}`;
-            }
-
-            function showToast(msg, type = 'info') {
-                toastMessage.textContent = msg;
-                toast.className = `toast ${type}`;
-                toastIcon.textContent = type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ';
-                toast.classList.add('show');
-                clearTimeout(toast._timeout);
-                toast._timeout = setTimeout(() => toast.classList.remove('show'), 2500);
-            }
-
-            function updateVolumeUI() {
-                audioPlayer.volume = state.volume;
-                volumeFill.style.setProperty('--volume', `${state.volume * 100}%`);
-                volumeSvg.innerHTML = state.volume === 0 ?
-                    '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>' :
-                    (state.volume < 0.5 ?
-                        '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>' :
-                        '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>');
-            }
-
-            function updateProgressUI() {
-                const pct = state.currentTime / (audioPlayer.duration || 1) * 100;
-                progressFill.style.width = `${pct}%`;
-                currentTimeEl.textContent = formatTime(state.currentTime);
-                totalTimeEl.textContent = formatTime(audioPlayer.duration || 0);
-            }
-
-            function updatePlayButton() {
-                if (state.isPlaying) {
-                    btnPlay.classList.add('playing');
-                    albumArt.classList.add('playing');
-                } else {
-                    btnPlay.classList.remove('playing');
-                    albumArt.classList.remove('playing');
-                }
-            }
-
-            function updateTrackInfo() {
-                if (state.currentIndex >= 0 && state.tracks[state.currentIndex]) {
-                    const tr = state.tracks[state.currentIndex];
-                    trackName.textContent = tr.name;
-                    trackArtist.textContent = tr.artist || (state.lang === 'fa' ? 'هنرمند ناشناس' : 'Unknown Artist');
-                    albumArt.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>';
-                } else {
-                    trackName.textContent = t('trackNone');
-                    trackArtist.textContent = t('trackNoneArtist');
-                    albumArt.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>';
-                }
-            }
-
-function updatePlaylistUI() {
-    const items = playlistItems.querySelectorAll('.playlist-item');
-    items.forEach(item => {
-        const itemIndex = parseInt(item.dataset.index);
-        if (itemIndex === state.currentIndex) {
-            item.classList.add('active');
-        } else {
-            item.classList.remove('active');
+    const translations = {
+        fa: {
+            headerBrand: 'Alireza1001',
+            heroBadge: 'پخش موسیقی حرفه‌ای و اختصاصی',
+            heroTitle1: 'تجربه‌ای متفاوت از',
+            heroTitle2: 'موسیقی',
+            heroSubtitle: 'آهنگ‌های خود را آپلود کنید، پلی‌لیست بسازید و از پخش با کیفیت بالا لذت ببرید.',
+            heroBtnPrimary: 'شروع پخش موسیقی',
+            trackNone: 'آهنگی انتخاب نشده',
+            trackNoneArtist: 'برای شروع، فایل صوتی آپلود کنید',
+            upload: 'آپلود آهنگ',
+            playlistTitle: 'پلی‌لیست شما',
+            playlistEmptyText: 'هنوز آهنگی آپلود نکرده‌اید. از دکمه «آپلود آهنگ» استفاده کنید.',
+            fq1: '⚡️ در سکوت می‌سازم، دقیق می‌بینم، عمیق حرکت می‌کنم ⚡️',
+            fq2: 'ساخته شده با ❤️ از طرف Alireza1001',
+            footerBottom: '© 2026 Alireza1001 — تمامی حقوق محفوظ است.',
+            toastUploadSuccess: 'آهنگ با موفقیت آپلود شد!',
+            toastUploadError: 'خطا در آپلود فایل. لطفاً فایل صوتی معتبر انتخاب کنید.',
+            dropOverlayText: 'فایل‌های صوتی را اینجا رها کنید',
+            toastPlay: 'در حال پخش:',
+            toastPause: 'پخش متوقف شد',
+            toastNoTrack: 'ابتدا یک آهنگ آپلود کنید.',
+            toastVolume: 'میزان صدا:',
+            toastShuffleOn: 'پخش تصادفی فعال شد',
+            toastShuffleOff: 'پخش تصادفی غیرفعال شد',
+            toastRepeatOn: 'تکرار فعال شد',
+            toastRepeatOff: 'تکرار غیرفعال شد',
+            toastRepeatOne: 'تکرار یک آهنگ فعال شد',
+            trackCount: 'آهنگ',
+            shuffleTitle: 'پخش تصادفی',
+            repeatTitle: 'تکرار',
+            prevTitle: 'قبلی',
+            nextTitle: 'بعدی',
+            themeTitle: 'تغییر حالت رنگی',
+            langTitle: 'تغییر زبان',
+            colorTitle: 'پالت رنگی',
+            colorPickerLabel: 'انتخاب رنگ:',
+            speedTitle: 'سرعت پخش',
+            playPauseTitle: 'پخش/توقف',
+            volumeTitle: 'میزان صدا',
+            speedToast: 'سرعت پخش',
+            like: 'لایک',
+            delete: 'حذف'
+        },
+        en: {
+            headerBrand: 'Alireza1001',
+            heroBadge: 'Professional & Personal Music Player',
+            heroTitle1: 'A Different Experience of',
+            heroTitle2: 'Music',
+            heroSubtitle: 'Upload your songs, build playlists, and enjoy high-quality playback.',
+            heroBtnPrimary: 'Start Playing Music',
+            trackNone: 'No track selected',
+            trackNoneArtist: 'Upload an audio file to start',
+            upload: 'Upload Track',
+            playlistTitle: 'Your Playlist',
+            playlistEmptyText: 'No songs uploaded yet. Use the "Upload Track" button.',
+            fq1: '⚡️ I build in silence, see precisely, move deeply ⚡️',
+            fq2: 'Made with ❤️ by Alireza1001',
+            footerBottom: '© 2026 Alireza1001 — All rights reserved.',
+            toastUploadSuccess: 'Track uploaded successfully!',
+            toastUploadError: 'Upload error. Please select a valid audio file.',
+            dropOverlayText: 'Drop audio files here',
+            toastPlay: 'Now playing:',
+            toastPause: 'Playback paused',
+            toastNoTrack: 'Please upload a track first.',
+            toastVolume: 'Volume:',
+            toastShuffleOn: 'Shuffle enabled',
+            toastShuffleOff: 'Shuffle disabled',
+            toastRepeatOn: 'Repeat enabled',
+            toastRepeatOff: 'Repeat disabled',
+            toastRepeatOne: 'Repeat One enabled',
+            trackCount: 'tracks',
+            shuffleTitle: 'Shuffle',
+            repeatTitle: 'Repeat',
+            prevTitle: 'Previous',
+            nextTitle: 'Next',
+            themeTitle: 'Toggle Theme',
+            langTitle: 'Change Language',
+            colorTitle: 'Color Palette',
+            colorPickerLabel: 'Pick color:',
+            speedTitle: 'Playback Speed',
+            playPauseTitle: 'Play/Pause',
+            volumeTitle: 'Volume',
+            speedToast: 'Playback speed',
+            like: 'Like',
+            delete: 'Delete'
         }
-    });
-    playlistCount.textContent = `${state.tracks.length} ${t('trackCount')}`;
-    playlistEmpty.style.display = state.tracks.length === 0 ? 'block' : 'none';
+    };
+
+    function t(key) { return translations[state.lang][key] || key; }
+
+    function formatTime(seconds) {
+        if (isNaN(seconds) || seconds < 0) return '0:00';
+        const m = Math.floor(seconds / 60);
+        const s = Math.floor(seconds % 60);
+        return `${m}:${s.toString().padStart(2, '0')}`;
+    }
+
+    function updateDocumentTitle(trackName) {
+        document.title = trackName ? trackName : 'Alireza1001 | Music Player';
+    }
+
+    function showToast(msg, type = 'info') {
+        toastMessage.textContent = msg;
+        toast.className = `toast ${type}`;
+        toastIcon.textContent = type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ';
+        toast.classList.add('show');
+        toast.setAttribute('aria-live', 'polite');
+        clearTimeout(toast._timeout);
+        toast._timeout = setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    function initAudioContext() {
+        if (!audioContext) {
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioContext.createAnalyser();
+                analyser.fftSize = 256;
+                source = audioContext.createMediaElementSource(audioPlayer);
+                source.connect(analyser);
+                analyser.connect(audioContext.destination);
+                visualizerDataArray = new Uint8Array(analyser.frequencyBinCount);
+            } catch (err) {
+                console.error('AudioContext init failed:', err);
+                audioContext = null;
+                analyser = null;
+                visualizerDataArray = null;
+                showToast('خطا در راه‌اندازی صدا', 'error');
+            }
+        }
+        if (audioContext && audioContext.state === 'suspended') {
+            audioContext.resume().catch(err => console.warn('Resume failed:', err));
+        }
+    }
+
+    function updateVisualizer() {
+        if (!analyser || !visualizerDataArray || visualizerBars.length === 0) return;
+        const dataArray = visualizerDataArray;
+        analyser.getByteFrequencyData(dataArray);
+        const bars = visualizerBars.length;
+        const step = Math.floor(dataArray.length / bars);
+        if (step === 0) return;
+        const center = (bars - 1) / 2;
+        const maxDistance = center;
+        for (let i = 0; i < bars; i++) {
+            const start = i * step;
+            const end = start + step;
+            let sum = 0;
+            for (let j = start; j < end; j++) sum += dataArray[j];
+            const avg = sum / (end - start);
+            const distance = Math.abs(i - center);
+            const weight = 1 - (distance / maxDistance) * 0.6;
+            const targetHeight = Math.max(4, (avg / 255) * 46 * weight + 2);
+            const prev = visualizerPrevHeights[i] || 4;
+            let newHeight = targetHeight >= prev ? targetHeight : prev * 0.85 + targetHeight * 0.15;
+            if (newHeight < 4) newHeight = 4;
+            if (state.isPlaying && targetHeight < 8) newHeight += Math.random() * 2;
+            visualizerPrevHeights[i] = newHeight;
+            visualizerBars[i].style.height = `${newHeight}px`;
+        }
+    }
+
+    function startVisualizerLoop() {
+        if (animationFrameId) return;
+        function frame() { updateVisualizer(); animationFrameId = requestAnimationFrame(frame); }
+        frame();
+    }
+
+    function stopVisualizerLoop() {
+        if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
+    }
+
+    function buildVisualizerBars(count = 24) {
+        visualizer.innerHTML = '';
+        visualizerBars = [];
+        visualizerPrevHeights = new Array(count).fill(4);
+        for (let i = 0; i < count; i++) {
+            const bar = document.createElement('div');
+            bar.className = 'visualizer-bar';
+            visualizer.appendChild(bar);
+            visualizerBars.push(bar);
+        }
+    }
+
+    function createParticles() {
+        for (let i = 0; i < 25; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = `${Math.random()*100}%`;
+            p.style.animationDuration = `${10+Math.random()*20}s`;
+            p.style.animationDelay = `${-Math.random()*20}s`;
+            p.style.width = `${2+Math.random()*3}px`;
+            p.style.height = p.style.width;
+            p.style.opacity = `${0.3+Math.random()*0.4}`;
+            particlesContainer.appendChild(p);
+        }
+    }
+
+    function updateVolumeUI() {
+        audioPlayer.volume = state.volume;
+        volumeFill.style.setProperty('--volume', `${state.volume * 100}%`);
+        volumeSlider.setAttribute('aria-valuenow', Math.round(state.volume * 100));
+        volumeSvg.innerHTML = state.volume === 0 ?
+            '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>' :
+            (state.volume < 0.5 ?
+                '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>' :
+                '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>');
+    }
+
+    function updateProgressUI() {
+    const duration = Number.isFinite(audioPlayer.duration) ? audioPlayer.duration : 0;
+    const currentTime = Number.isFinite(state.currentTime) ? Math.max(0, state.currentTime) : 0;
+    const pct = duration > 0 ? Math.max(0, Math.min(100, (currentTime / duration) * 100)) : 0;
+
+    progressFill.style.width = `${pct}%`;
+    currentTimeEl.textContent = formatTime(currentTime);
+    totalTimeEl.textContent = formatTime(duration);
+
+    progressWrapper.setAttribute('aria-valuenow', Math.round(pct));
+    progressWrapper.setAttribute('aria-valuetext', formatTime(currentTime));
 }
 
-function renderPlaylist() {
+    function updatePlayButton() {
+        if (state.isPlaying) {
+            btnPlay.classList.add('playing');
+            albumArt.classList.add('playing');
+        } else {
+            btnPlay.classList.remove('playing');
+            albumArt.classList.remove('playing');
+        }
+    }
+
+    function updateTrackInfo() {
+        if (state.currentIndex >= 0 && state.tracks[state.currentIndex]) {
+            const tr = state.tracks[state.currentIndex];
+            trackName.textContent = tr.name;
+            trackArtist.textContent = tr.artist || (state.lang === 'fa' ? 'هنرمند ناشناس' : 'Unknown Artist');
+            albumArt.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>';
+        } else {
+            trackName.textContent = t('trackNone');
+            trackArtist.textContent = t('trackNoneArtist');
+            albumArt.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>';
+        }
+    }
+
+    function updatePlaylistUI() {
+        playlistItems.querySelectorAll('.playlist-item').forEach(item => {
+            item.classList.toggle('active', parseInt(item.dataset.index) === state.currentIndex);
+        });
+        playlistCount.textContent = `${state.tracks.length} ${t('trackCount')}`;
+        const emptyMsg = playlistItems.querySelector('.playlist-empty');
+        if (emptyMsg) emptyMsg.style.display = state.tracks.length === 0 ? 'block' : 'none';
+    }
+
+    function handlePlaylistClick(e) {
+    const item = e.target.closest('.playlist-item');
+    if (!item) return;
+    const index = parseInt(item.dataset.index);
+    if (e.target.closest('.playlist-item-remove')) {
+        removeTrack(index);
+    } else if (e.target.closest('.playlist-item-like')) {
+        toggleLike(index);
+    } else {
+        playTrack(index);
+    }
+}
+
+    function renderPlaylist() {
+    // پاک کردن لیست
+    playlistItems.innerHTML = '';
+
     if (state.tracks.length === 0) {
         playlistItems.innerHTML = `<div class="playlist-empty" id="playlistEmpty"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><p>${t('playlistEmptyText')}</p></div>`;
         updatePlaylistUI();
         return;
     }
 
-    // مرتب‌سازی: ابتدا لایک‌شده‌ها، سپس بقیه به ترتیب ایندکس (حفظ ترتیب اضافه شدن)
+    // مرتب‌سازی: لایک‌شده‌ها اول، بعد بقیه به ترتیب اصلی
     const indices = state.tracks
         .map((_, index) => index)
         .sort((a, b) => {
@@ -1743,576 +1805,848 @@ function renderPlaylist() {
             const likedB = state.tracks[b].liked;
             if (likedA && !likedB) return -1;
             if (!likedA && likedB) return 1;
-            return a - b; // حفظ ترتیب اصلی
+            return a - b;
         });
 
-    let html = '';
     indices.forEach((index) => {
         const track = state.tracks[index];
         const dur = track.duration ? formatTime(track.duration) : '--:--';
         const likedClass = track.liked ? 'liked' : '';
-        const heartIcon = track.liked ?
+
+        // ساخت آیتم
+        const item = document.createElement('div');
+        item.className = `playlist-item ${likedClass}`;
+        item.dataset.index = index;
+        item.dataset.id = track.id; // مهم برای مدیریت duration و shuffle
+
+        // آیکون
+        const iconDiv = document.createElement('div');
+        iconDiv.className = 'playlist-item-icon';
+        iconDiv.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>';
+        item.appendChild(iconDiv);
+
+        // اطلاعات
+        const infoDiv = document.createElement('div');
+        infoDiv.className = 'playlist-item-info';
+        const nameDiv = document.createElement('div');
+        nameDiv.className = 'playlist-item-name';
+        nameDiv.textContent = track.name; // امن
+        const durDiv = document.createElement('div');
+        durDiv.className = 'playlist-item-duration';
+        durDiv.textContent = dur;
+        infoDiv.appendChild(nameDiv);
+        infoDiv.appendChild(durDiv);
+        item.appendChild(infoDiv);
+
+        // دکمه لایک
+        const likeBtn = document.createElement('button');
+        likeBtn.className = `playlist-item-like ${likedClass}`;
+        likeBtn.dataset.index = index;
+        likeBtn.title = t('like');
+        likeBtn.setAttribute('aria-label', t('like'));
+        likeBtn.innerHTML = track.liked ?
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color:#ef4444;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' :
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
+        item.appendChild(likeBtn);
 
-        html += `
-            <div class="playlist-item" data-index="${index}">
-                <div class="playlist-item-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-                </div>
-                <div class="playlist-item-info">
-                    <div class="playlist-item-name">${track.name}</div>
-                    <div class="playlist-item-duration">${dur}</div>
-                </div>
-                <button class="playlist-item-like ${likedClass}" data-index="${index}" title="لایک" aria-label="لایک">
-                    ${heartIcon}
-                </button>
-                <button class="playlist-item-remove" data-index="${index}" title="حذف" aria-label="حذف">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </button>
-            </div>`;
+        // دکمه حذف
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'playlist-item-remove';
+        removeBtn.dataset.index = index;
+        removeBtn.title = t('delete');
+        removeBtn.setAttribute('aria-label', t('delete'));
+        removeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+        item.appendChild(removeBtn);
+
+        playlistItems.appendChild(item);
     });
 
-    playlistItems.innerHTML = html;
     updatePlaylistUI();
-
-    // رویداد کلیک روی آیتم (پخش)
-    playlistItems.querySelectorAll('.playlist-item').forEach(item => {
-        item.addEventListener('click', (e) => {
-            if (e.target.closest('.playlist-item-remove') || e.target.closest('.playlist-item-like')) return;
-            stopPreview();
-            const idx = parseInt(item.dataset.index);
-            playTrack(idx);
-        });
-        item.addEventListener('mouseenter', () => {
-            const idx = parseInt(item.dataset.index);
-            startPreview(idx);
-        });
-        item.addEventListener('mouseleave', () => {
-            stopPreview();
-        });
-    });
-
-    // رویداد حذف
-    playlistItems.querySelectorAll('.playlist-item-remove').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const idx = parseInt(btn.dataset.index);
-            removeTrack(idx);
-        });
-    });
-
-    // رویداد لایک
-    playlistItems.querySelectorAll('.playlist-item-like').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const idx = parseInt(btn.dataset.index);
-            toggleLike(idx);
-        });
-    });
 }
 
-            function startPreview(index) {
-                if (state.tracks.length === 0 || index < 0 || index >= state.tracks.length) return;
-                const track = state.tracks[index];
-                if (!track.url) return;
-                stopPreview();
-                previousTrackState.playing = state.isPlaying;
-                previousTrackState.src = audioPlayer.src;
-                previousTrackState.time = audioPlayer.currentTime;
-                if (state.isPlaying) {
-                    audioPlayer.pause();
-                    state.isPlaying = false;
-                    updatePlayButton();
-                }
-                previewAudio = new Audio(track.url);
-                previewAudio.volume = state.volume;
-                previewAudio.currentTime = 0;
-                previewAudio.play().catch(() => {});
-                previewTimeout = setTimeout(() => {
-                    stopPreview();
-                }, 10000);
-            }
-
-            function stopPreview() {
-                if (previewAudio) {
-                    previewAudio.pause();
-                    previewAudio = null;
-                }
-                if (previewTimeout) {
-                    clearTimeout(previewTimeout);
-                    previewTimeout = null;
-                }
-                if (previousTrackState.src) {
-                    if (previousTrackState.playing && previousTrackState.src === audioPlayer.src) {
-                        audioPlayer.currentTime = previousTrackState.time;
-                        audioPlayer.play().catch(() => {});
-                        state.isPlaying = true;
-                        updatePlayButton();
-                    }
-                }
-                previousTrackState = { playing: false, src: '', time: 0 };
-            }
-
-function playTrack(index) {
+async function removeTrack(index) {
     if (index < 0 || index >= state.tracks.length) return;
-
-    // اطمینان از ساخت AudioContext قبل از پخش
-    if (!audioContext) initAudioContext();
-
-    state.currentIndex = index;
     const track = state.tracks[index];
-    if (track.url) audioPlayer.src = track.url;
-    audioPlayer.play().catch(() => {});
-    state.isPlaying = true;
-    updatePlayButton();
-    updateTrackInfo();
-    updatePlaylistUI();
-    showToast(`${t('toastPlay')} ${track.name}`, 'info');
-    if (audioContext && analyser) startVisualizerLoop();
+    if (removingIds.has(track.id)) return; // اگر در حال حذف است، نادیده بگیر
+    removingIds.add(track.id);
+
     try {
-        localStorage.setItem('alireza1001_saved_index', index);
-        localStorage.setItem('alireza1001_saved_time', '0');
-    } catch (e) {}
+        await deleteTrackFromDB(track.id);
+        if (track.url) URL.revokeObjectURL(track.url);
+    } catch (err) {
+        console.error('Delete failed:', err);
+        showToast('خطا در حذف آهنگ', 'error');
+        removingIds.delete(track.id);
+        return;
+    }
+
+    state.shufflePlayed = state.shufflePlayed.filter(id => id !== track.id);
+    state.tracks.splice(index, 1);
+
+    if (state.tracks.length === 0) {
+        state.currentIndex = -1;
+        audioPlayer.src = '';
+        state.isPlaying = false;
+        updatePlayButton();
+        updateTrackInfo();
+        stopVisualizerLoop(); 
+    } else if (index === state.currentIndex) {
+        const newIdx = Math.min(index, state.tracks.length - 1);
+        playTrack(newIdx);
+    } else if (index < state.currentIndex) {
+        state.currentIndex--;
+    }
+
+    renderPlaylist();
+    updateTrackInfo();
+    removingIds.delete(track.id);
 }
 
-            function togglePlay() {
-                if (state.tracks.length === 0) { showToast(t('toastNoTrack'), 'error'); return; }
-                if (state.currentIndex === -1) { playTrack(0); return; }
-                if (audioPlayer.paused) { audioPlayer.play().catch(() => {}); state.isPlaying = true; } else { audioPlayer.pause(); state.isPlaying = false; }
-                updatePlayButton();
-                if (state.isPlaying) startVisualizerLoop();
-                else stopVisualizerLoop();
-            }
+    function isAudioFile(file) {
+    if (!file) return false;
+    if (file.type && file.type.startsWith('audio/')) {
+        return true;
+    }
+    const name = file.name.toLowerCase();
+    return /\.(mp3|wav|ogg|m4a|aac|flac|opus|webm)$/i.test(name);
+}
 
-            function playNext() {
-                if (state.tracks.length === 0) return;
-                if (state.isShuffle && state.tracks.length > 1) {
-                    let next; do { next = Math.floor(Math.random() * state.tracks.length); } while (next === state.currentIndex);
-                    playTrack(next);
-                } else {
-                    const next = (state.currentIndex + 1) % state.tracks.length;
-                    playTrack(next);
+    async function addTracks(files) {
+        let added = 0;
+        for (const file of Array.from(files)) {
+            if (isAudioFile(file)) {
+                const id = `${Date.now()}_${Math.random().toString(36).substr(2,9)}`;
+                const trackData = { id, name: file.name.replace(/\.[^.]+$/, ''), artist: '', duration: 0, blob: file, liked: false };
+                try {
+                    await saveTrackToDB(trackData);
+                    const url = URL.createObjectURL(file);
+                    state.tracks.push({ id, name: trackData.name, artist: '', duration: 0, url, blob: file, liked: false });
+                    added++;
+                } catch (err) {
+                    console.error('DB save error', err);
                 }
             }
+        }
+        if (added > 0) {
+            renderPlaylist();
+            loadTrackDurations();
+            if (state.currentIndex === -1) playTrack(0);
+            showToast(`${t('toastUploadSuccess')} (${added})`, 'success');
+        } else {
+            showToast(t('toastUploadError'), 'error');
+        }
+    }
 
-            function playPrev() {
-                if (state.tracks.length === 0) return;
-                if (state.currentTime > 3) { audioPlayer.currentTime = 0; return; }
-                if (state.isShuffle && state.tracks.length > 1) {
-                    let prev; do { prev = Math.floor(Math.random() * state.tracks.length); } while (prev === state.currentIndex);
-                    playTrack(prev);
-                } else {
-                    const prev = (state.currentIndex - 1 + state.tracks.length) % state.tracks.length;
-                    playTrack(prev);
-                }
-            }
-
-            function removeTrack(index) {
-                if (index < 0 || index >= state.tracks.length) return;
-                const track = state.tracks[index];
-                const wasPlaying = (index === state.currentIndex);
-                deleteTrackFromDB(track.id);
-                state.tracks.splice(index, 1);
-                if (state.tracks.length === 0) {
-                    state.currentIndex = -1;
-                    audioPlayer.src = '';
-                    state.isPlaying = false;
-                    updatePlayButton();
-                    updateTrackInfo();
-                    stopVisualizerLoop();
-                    try { localStorage.removeItem('alireza1001_saved_index'); localStorage.removeItem('alireza1001_saved_time'); } catch (e) {}
-                } else if (wasPlaying) {
-                    const newIdx = Math.min(index, state.tracks.length - 1);
-                    playTrack(newIdx);
-                } else if (index < state.currentIndex) {
-                    state.currentIndex--;
-                }
-                renderPlaylist();
-                updateTrackInfo();
-            }
-
-            async function addTracks(files) {
-                let added = 0;
-                for (const file of Array.from(files)) {
-                    if (file.type.startsWith('audio/')) {
-                        const id = `${Date.now()}_${Math.random().toString(36).substr(2,9)}`;
-                        const trackData = { id, name: file.name.replace(/\.[^.]+$/, ''), artist: '', duration: 0, blob: file, liked: false };
-                        try {
-                            await saveTrackToDB(trackData);
-                            const url = URL.createObjectURL(file);
-                            state.tracks.push({ id, name: trackData.name, artist: '', duration: 0, url, blob: file, liked: false });
-                            added++;
-                        } catch (err) { console.error('DB save error', err); }
-                    }
-                }
-                if (added > 0) {
-                    renderPlaylist();
-                    if (state.currentIndex === -1) playTrack(0);
-                    showToast(`${t('toastUploadSuccess')} (${added})`, 'success');
-                } else {
-                    showToast(t('toastUploadError'), 'error');
-                }
-            }
-
-            const DB_NAME = 'alireza1001_audio_db_firoozei';
-            const STORE_NAME = 'tracks';
-            let db = null;
-
-            function openDB() {
-                return new Promise((resolve, reject) => {
-                    const request = indexedDB.open(DB_NAME, 1);
-                    request.onupgradeneeded = (e) => {
-                        const db = e.target.result;
-                        if (!db.objectStoreNames.contains(STORE_NAME)) {
-                            db.createObjectStore(STORE_NAME, { keyPath: 'id' });
-                        }
-                    };
-                    request.onsuccess = (e) => { db = e.target.result; resolve(db); };
-                    request.onerror = (e) => reject(e.target.error);
-                });
-            }
-
-            function toggleLike(index) {
+    function toggleLike(index) {
     if (index < 0 || index >= state.tracks.length) return;
     const track = state.tracks[index];
+    const previousLiked = track.liked;
     track.liked = !track.liked;
 
-    // ذخیره در IndexedDB
+    // به‌روزرسانی UI
+    const item = playlistItems.querySelector(`.playlist-item[data-id="${track.id}"]`);
+    if (item) {
+        item.classList.toggle('liked', track.liked);
+        const likeBtn = item.querySelector('.playlist-item-like');
+        if (likeBtn) {
+            likeBtn.classList.toggle('liked', track.liked);
+            likeBtn.innerHTML = track.liked ?
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color:#ef4444;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' :
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
+        }
+    }
+
     if (db) {
         const tx = db.transaction(STORE_NAME, 'readwrite');
         const store = tx.objectStore(STORE_NAME);
         store.put({ id: track.id, name: track.name, artist: track.artist, duration: track.duration, blob: track.blob, liked: track.liked });
-        tx.oncomplete = () => console.log('Like status saved');
-        tx.onerror = (e) => console.error('Like save error', e);
+        tx.oncomplete = () => {
+            console.log('Like saved');
+                renderPlaylist();
+                    };
+        tx.onerror = (e) => {
+            console.error('Like save failed', e);
+            // Rollback state و UI
+            track.liked = previousLiked;
+            if (item) {
+                item.classList.toggle('liked', track.liked);
+                const likeBtn = item.querySelector('.playlist-item-like');
+                if (likeBtn) {
+                    likeBtn.classList.toggle('liked', track.liked);
+                    likeBtn.innerHTML = track.liked ?
+                        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color:#ef4444;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' :
+                        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
+                }
+            }
+            showToast('خطا در ذخیره لایک', 'error');
+        };
     }
-
-    // به‌روزرسانی نمایش
-    renderPlaylist();
 }
 
-            function saveTrackToDB(trackData) {
-                if (!db) return Promise.reject('DB not open');
-                return new Promise((resolve, reject) => {
-                    const tx = db.transaction(STORE_NAME, 'readwrite');
-                    const store = tx.objectStore(STORE_NAME);
-                    store.put(trackData);
-                    tx.oncomplete = () => resolve();
-                    tx.onerror = (e) => reject(e.target.error);
-                });
+    const DB_NAME = 'alireza1001_audio_db_firoozei';
+    const STORE_NAME = 'tracks';
+    let db = null;
+
+    function openDB() {
+        return new Promise((resolve, reject) => {
+            const request = indexedDB.open(DB_NAME, 1);
+            request.onupgradeneeded = (e) => {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains(STORE_NAME)) {
+                    db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+                }
+            };
+            request.onsuccess = (e) => { db = e.target.result; resolve(db); };
+            request.onerror = (e) => reject(e.target.error);
+
+request.onblocked = () => {
+    console.warn('IndexedDB upgrade is blocked by another open connection.');
+};
+        });
+    }
+
+    function saveTrackToDB(trackData) {
+        if (!db) return Promise.reject('DB not open');
+        return new Promise((resolve, reject) => {
+            const tx = db.transaction(STORE_NAME, 'readwrite');
+            const store = tx.objectStore(STORE_NAME);
+            store.put(trackData);
+            tx.oncomplete = () => resolve();
+            tx.onerror = (e) => reject(e.target.error);
+        });
+    }
+
+    function deleteTrackFromDB(id) {
+        if (!db) return Promise.reject('DB not open');
+        return new Promise((resolve, reject) => {
+            const tx = db.transaction(STORE_NAME, 'readwrite');
+            const store = tx.objectStore(STORE_NAME);
+            store.delete(id);
+            tx.oncomplete = () => resolve();
+            tx.onerror = (e) => reject(e.target.error);
+        });
+    }
+
+    function loadTracksFromDB() {
+        if (!db) return Promise.resolve([]);
+        return new Promise((resolve, reject) => {
+            const tx = db.transaction(STORE_NAME, 'readonly');
+            const store = tx.objectStore(STORE_NAME);
+            const request = store.getAll();
+            request.onsuccess = () => resolve(request.result || []);
+            request.onerror = (e) => reject(e.target.error);
+        });
+    }
+
+    function loadTrackDurations() {
+        state.tracks.forEach((track) => {
+            if (track.duration === 0 && track.url) {
+                const temp = new Audio();
+                temp.preload = 'metadata';
+                temp.src = track.url;
+                temp.onloadedmetadata = () => {
+    if (!state.tracks.some(t => t.id === track.id)) {
+        temp.src = '';
+        return;
+    }
+    track.duration = temp.duration || 0;
+    const item = playlistItems.querySelector(`.playlist-item[data-id="${track.id}"]`);
+    if (item) {
+        const durEl = item.querySelector('.playlist-item-duration');
+        if (durEl) durEl.textContent = formatTime(track.duration);
+    }
+    if (db) {
+        const tx = db.transaction(STORE_NAME, 'readwrite');
+        tx.objectStore(STORE_NAME).put({ id: track.id, name: track.name, artist: track.artist, duration: track.duration, blob: track.blob, liked: track.liked });
+        tx.onerror = (e) => console.error('Duration save failed', e);
+    }
+    temp.src = '';
+};
+                temp.onerror = () => { temp.src = ''; };
             }
+        });
+    }
 
-            function deleteTrackFromDB(id) {
-                if (!db) return Promise.reject('DB not open');
-                return new Promise((resolve, reject) => {
-                    const tx = db.transaction(STORE_NAME, 'readwrite');
-                    const store = tx.objectStore(STORE_NAME);
-                    store.delete(id);
-                    tx.oncomplete = () => resolve();
-                    tx.onerror = (e) => reject(e.target.error);
-                });
-            }
+    async function loadPersistedTracks() {
+        try {
+            await openDB();
+            const storedTracks = await loadTracksFromDB();
+            state.tracks = storedTracks.map(t => ({
+                id: t.id,
+                name: t.name,
+                artist: t.artist || '',
+                duration: t.duration || 0,
+                url: URL.createObjectURL(t.blob),
+                blob: t.blob,
+                liked: t.liked || false,
+            }));
+            const savedTrackId = localStorage.getItem('alireza1001_saved_track_id');
+            const savedVolume = parseFloat(localStorage.getItem('alireza1001_volume'));
+const savedRate = parseFloat(localStorage.getItem('alireza1001_rate'));
+const savedShuffle = localStorage.getItem('alireza1001_shuffle') === 'true';
+const savedRepeat = parseInt(localStorage.getItem('alireza1001_repeat')) || 0;
 
-            function loadTracksFromDB() {
-                if (!db) return Promise.resolve([]);
-                return new Promise((resolve, reject) => {
-                    const tx = db.transaction(STORE_NAME, 'readonly');
-                    const store = tx.objectStore(STORE_NAME);
-                    const request = store.getAll();
-                    request.onsuccess = () => resolve(request.result || []);
-                    request.onerror = (e) => reject(e.target.error);
-                });
-            }
+if (!isNaN(savedVolume) && savedVolume >= 0 && savedVolume <= 1) {
+    state.volume = savedVolume;
+    state.lastVolume = savedVolume;
+}
+if (!isNaN(savedRate) && savedRate > 0 && savedRate <= 3) {
+    state.playbackRate = savedRate;
+}
+if (savedRepeat >= 0 && savedRepeat <= 2) {
+    state.repeatMode = savedRepeat;
+}
+            state.isShuffle = savedShuffle;
+            updateVolumeUI();
+            updateShuffleButton();
+            updateRepeatButton();
+            speedLabel.textContent = `${state.playbackRate}x`;
+            audioPlayer.playbackRate = state.playbackRate;
 
-            async function loadPersistedTracks() {
-                try {
-                    await openDB();
-                    const storedTracks = await loadTracksFromDB();
-                    state.tracks = storedTracks.map(t => ({
-    id: t.id,
-    name: t.name,
-    artist: t.artist || '',
-    duration: t.duration || 0,
-    url: URL.createObjectURL(t.blob),
-    blob: t.blob,
-    liked: t.liked || false,
-}));
-                    if (state.tracks.length > 0) {
-                        renderPlaylist();
-                        let savedIndex = -1;
-                        let savedTime = 0;
-                        try {
-                            savedIndex = parseInt(localStorage.getItem('alireza1001_saved_index') || '-1');
-                            savedTime = parseFloat(localStorage.getItem('alireza1001_saved_time') || '0');
-                        } catch (e) {}
-                        if (savedIndex >= 0 && savedIndex < state.tracks.length) {
-                            state.currentIndex = savedIndex;
-                            audioPlayer.src = state.tracks[savedIndex].url;
-                            audioPlayer.currentTime = savedTime;
-                            updateTrackInfo();
-                            updatePlaylistUI();
-                        } else {
-                            state.currentIndex = 0;
-                            audioPlayer.src = state.tracks[0].url;
-                            updateTrackInfo();
-                        }
-                    } else {
-                        renderPlaylist();
-                    }
-                } catch (err) { console.error('IndexedDB load error', err); }
-            }
+            if (state.tracks.length > 0) {
+                renderPlaylist();
+                let targetIndex = -1;
+                if (savedTrackId) {
+                    targetIndex = state.tracks.findIndex(t => t.id === savedTrackId);
+                }
+                if (targetIndex >= 0) {
+                    state.currentIndex = targetIndex;
+                    if (state.isShuffle) {
+                        state.shufflePlayed = [state.tracks[targetIndex].id];
+                            }
+                    audioPlayer.src = state.tracks[targetIndex].url;
 
-            function setCustomColor(hex) {
-                state.customColor = hex;
-                const r = parseInt(hex.slice(1, 3), 16),
-                    g = parseInt(hex.slice(3, 5), 16),
-                    b = parseInt(hex.slice(5, 7), 16);
-                document.documentElement.style.setProperty('--primary', hex);
-                document.documentElement.style.setProperty('--primary-light', `rgba(${r},${g},${b},0.8)`);
-                document.documentElement.style.setProperty('--primary-dark', `rgba(${r*0.7},${g*0.7},${b*0.7},1)`);
-                document.documentElement.style.setProperty('--primary-glow', `rgba(${r},${g},${b},0.3)`);
-                document.documentElement.style.setProperty('--gradient', `linear-gradient(135deg, rgba(${r*0.8},${g*0.8},${b*0.8},1), ${hex}, rgba(${r},${g},${b},0.8), ${hex})`);
-                document.documentElement.style.setProperty('--gradient-hero', `linear-gradient(135deg, rgba(${r*0.6},${g*0.6},${b*0.6},1) 0%, rgba(${r*0.8},${g*0.8},${b*0.8},1) 30%, ${hex} 60%, rgba(${r},${g},${b},0.8) 100%)`);
-                try { localStorage.setItem('alireza1001_custom_color_firoozei', hex); } catch (e) {}
-            }
-
-            function setTheme(theme) {
-                state.theme = theme;
-                document.documentElement.setAttribute('data-theme', theme);
-                themeIconSvg.innerHTML = theme === 'dark' ?
-                    '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>' :
-                    '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
-                try { localStorage.setItem('alireza1001_theme_firoozei', theme); } catch (e) {}
-            }
-
-            function toggleTheme() { setTheme(state.theme === 'dark' ? 'light' : 'dark'); }
-
-            function setLanguage(lang) {
-                state.lang = lang;
-                document.body.setAttribute('lang', lang);
-                document.body.dir = lang === 'en' ? 'ltr' : 'rtl';
-                langIcon.textContent = lang === 'en' ? 'فا' : 'EN';
-                applyTranslations();
-                try { localStorage.setItem('alireza1001_lang_firoozei', lang); } catch (e) {}
-            }
-
-            function toggleLanguage() { setLanguage(state.lang === 'fa' ? 'en' : 'fa'); }
-
-            function applyTranslations() {
-                headerBrand.textContent = t('headerBrand');
-                heroBadgeText.textContent = t('heroBadge');
-                heroTitle1.textContent = t('heroTitle1');
-                heroTitle2.textContent = t('heroTitle2');
-                heroSubtitle.textContent = t('heroSubtitle');
-                heroBtnPrimary.textContent = t('heroBtnPrimary');
-                uploadText.textContent = t('upload');
-                playlistTitle.textContent = t('playlistTitle');
-                playlistEmptyText.textContent = t('playlistEmptyText');
-                dropOverlayText.textContent = t('dropOverlayText');
-                footerQuote1.innerHTML = t('fq1');
-                footerQuote2.innerHTML = t('fq2');
-                footerBottom.innerHTML = t('footerBottom');
-                if (state.currentIndex === -1) {
-                    trackName.textContent = t('trackNone');
-                    trackArtist.textContent = t('trackNoneArtist');
-                } else updateTrackInfo();
+                    const parsedTime = parseFloat(localStorage.getItem('alireza1001_saved_time') || '0');
+                    const savedTime = Number.isFinite(parsedTime) && parsedTime >= 0 ? parsedTime : 0;
+                    audioPlayer.addEventListener('loadedmetadata', function onMeta() {
+                        audioPlayer.currentTime = Math.min(savedTime, audioPlayer.duration || 0);
+                        state.currentTime = audioPlayer.currentTime;
+                        updateProgressUI();
+                        audioPlayer.removeEventListener('loadedmetadata', onMeta);
+                    });
+                    updateTrackInfo();
+                } else {
+                    state.currentIndex = 0;
+                    audioPlayer.src = state.tracks[0].url;
+                    updateTrackInfo();
+                }
                 updatePlaylistUI();
-                btnShuffle.title = t('shuffleTitle');
-                btnRepeat.title = t('repeatTitle');
-                btnPrev.title = t('prevTitle');
-                btnNext.title = t('nextTitle');
-                themeToggle.title = t('themeTitle');
-                langToggle.title = t('langTitle');
-                colorToggle.title = t('colorTitle');
+                loadTrackDurations();
+            } else {
                 renderPlaylist();
             }
-
-            function setupEventListeners() {
-                themeToggle.addEventListener('click', (e) => {
-                    const ripple = document.createElement('span');
-                    ripple.className = 'ripple';
-                    const rect = themeToggle.getBoundingClientRect();
-                    ripple.style.left = `${e.clientX-rect.left}px`;
-                    ripple.style.top = `${e.clientY-rect.top}px`;
-                    themeToggle.appendChild(ripple);
-                    setTimeout(() => ripple.remove(), 600);
-                    toggleTheme();
-                });
-                langToggle.addEventListener('click', (e) => {
-                    const ripple = document.createElement('span');
-                    ripple.className = 'ripple';
-                    const rect = langToggle.getBoundingClientRect();
-                    ripple.style.left = `${e.clientX-rect.left}px`;
-                    ripple.style.top = `${e.clientY-rect.top}px`;
-                    langToggle.appendChild(ripple);
-                    setTimeout(() => ripple.remove(), 600);
-                    toggleLanguage();
-                });
-                colorToggle.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    colorPanel.classList.toggle('open');
-                });
-                document.addEventListener('click', (e) => {
-                    if (!colorPanel.contains(e.target) && e.target !== colorToggle) colorPanel.classList.remove('open');
-                });
-                colorSwatches.addEventListener('click', (e) => {
-                    const swatch = e.target.closest('.color-swatch');
-                    if (swatch) {
-                        const color = swatch.dataset.color;
-                        setCustomColor(color);
-                        customColorInput.value = color;
-                    }
-                });
-                customColorInput.addEventListener('input', (e) => setCustomColor(e.target.value));
-
-                scrollToPlayer.addEventListener('click', () => playerSection.scrollIntoView({ behavior: 'smooth' }));
-                btnPlay.addEventListener('click', () => {
-                    if (!audioContext) initAudioContext();
-                    togglePlay();
-                });
-                btnNext.addEventListener('click', playNext);
-                btnPrev.addEventListener('click', playPrev);
-                btnShuffle.addEventListener('click', () => {
-                    state.isShuffle = !state.isShuffle;
-                    btnShuffle.style.background = state.isShuffle ? 'var(--primary)' : 'var(--bg-secondary)';
-                    btnShuffle.style.color = state.isShuffle ? '#fff' : 'var(--text-secondary)';
-                    btnShuffle.style.borderColor = state.isShuffle ? 'var(--primary)' : 'var(--border)';
-                    showToast(state.isShuffle ? t('toastShuffleOn') : t('toastShuffleOff'), 'info');
-                });
-                btnRepeat.addEventListener('click', () => {
-                    state.isRepeat = !state.isRepeat;
-                    btnRepeat.style.background = state.isRepeat ? 'var(--primary)' : 'var(--bg-secondary)';
-                    btnRepeat.style.color = state.isRepeat ? '#fff' : 'var(--text-secondary)';
-                    btnRepeat.style.borderColor = state.isRepeat ? 'var(--primary)' : 'var(--border)';
-                    showToast(state.isRepeat ? t('toastRepeatOn') : t('toastRepeatOff'), 'info');
-                });
-                fileInput.addEventListener('change', (e) => { if (e.target.files.length > 0) { addTracks(e.target.files);
-                        e.target.value = ''; } });
-                uploadLabel.addEventListener('dragover', (e) => { e.preventDefault();
-                    uploadLabel.classList.add('drag-over'); });
-                uploadLabel.addEventListener('dragleave', () => uploadLabel.classList.remove('drag-over'));
-                uploadLabel.addEventListener('drop', (e) => { e.preventDefault();
-                    uploadLabel.classList.remove('drag-over'); if (e.dataTransfer.files.length > 0) addTracks(e.dataTransfer.files); });
-// ========== Drag & Drop on Player Card ==========
-playerCard.addEventListener('dragenter', (e) => {
-    e.preventDefault();
-    dragCounter++;
-    dropOverlay.classList.add('active');
-});
-
-playerCard.addEventListener('dragleave', (e) => {
-    e.preventDefault();
-    dragCounter--;
-    if (dragCounter === 0) {
-        dropOverlay.classList.remove('active');
+        } catch (err) {
+            console.error('IndexedDB load error', err);
+            showToast('خطا در بارگذاری آهنگ‌ها', 'error');
+        }
     }
-});
 
-playerCard.addEventListener('dragover', (e) => {
-    e.preventDefault(); // لازم برای مجاز شدن drop
-});
+    function setCustomColor(hex) {
+    if (!/^#[0-9a-f]{6}$/i.test(hex)) {
+        console.warn('Invalid color format:', hex);
+        hex = '#427aeb'; // رنگ پیش‌فرض
+    }
+    state.customColor = hex;
+    const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+    document.documentElement.style.setProperty('--primary', hex);
+    document.documentElement.style.setProperty('--primary-light', `rgba(${r},${g},${b},0.8)`);
+    document.documentElement.style.setProperty('--primary-dark', `rgba(${Math.round(r*0.7)},${Math.round(g*0.7)},${Math.round(b*0.7)},1)`);
+    document.documentElement.style.setProperty('--primary-glow', `rgba(${r},${g},${b},0.3)`);
+    document.documentElement.style.setProperty('--gradient', `linear-gradient(135deg, rgba(${Math.round(r*0.8)},${Math.round(g*0.8)},${Math.round(b*0.8)},1), ${hex}, rgba(${r},${g},${b},0.8), ${hex})`);
+    document.documentElement.style.setProperty('--gradient-hero', `linear-gradient(135deg, rgba(${Math.round(r*0.6)},${Math.round(g*0.6)},${Math.round(b*0.6)},1) 0%, rgba(${Math.round(r*0.8)},${Math.round(g*0.8)},${Math.round(b*0.8)},1) 30%, ${hex} 60%, rgba(${r},${g},${b},0.8) 100%)`);
+    try { localStorage.setItem('alireza1001_custom_color_firoozei', hex); } catch (e) {}
+}
 
-playerCard.addEventListener('drop', (e) => {
+    function setTheme(theme) {
+        state.theme = theme;
+        document.documentElement.setAttribute('data-theme', theme);
+        themeIconSvg.innerHTML = theme === 'dark' ?
+            '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>' :
+            '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+        try { localStorage.setItem('alireza1001_theme_firoozei', theme); } catch (e) {}
+    }
+    function toggleTheme() { setTheme(state.theme === 'dark' ? 'light' : 'dark'); }
+
+    function setLanguage(lang) {
+        state.lang = lang;
+        document.body.setAttribute('lang', lang);
+        document.body.dir = lang === 'en' ? 'ltr' : 'rtl';
+        langIcon.textContent = lang === 'en' ? 'فا' : 'EN';
+        applyTranslations();
+        try { localStorage.setItem('alireza1001_lang_firoozei', lang); } catch (e) {}
+    }
+    function toggleLanguage() { setLanguage(state.lang === 'fa' ? 'en' : 'fa'); }
+
+    function applyTranslations() {
+        headerBrand.textContent = t('headerBrand');
+        heroBadgeText.textContent = t('heroBadge');
+        heroTitle1.textContent = t('heroTitle1');
+        heroTitle2.textContent = t('heroTitle2');
+        heroSubtitle.textContent = t('heroSubtitle');
+        heroBtnPrimary.textContent = t('heroBtnPrimary');
+        uploadText.textContent = t('upload');
+        playlistTitle.textContent = t('playlistTitle');
+        dropOverlayText.textContent = t('dropOverlayText');
+        footerQuote1.innerHTML = t('fq1');
+        footerQuote2.innerHTML = t('fq2');
+        footerBottom.innerHTML = t('footerBottom');
+        if (state.currentIndex === -1) {
+            trackName.textContent = t('trackNone');
+            trackArtist.textContent = t('trackNoneArtist');
+        } else updateTrackInfo();
+        updatePlaylistUI();
+        btnShuffle.title = t('shuffleTitle');
+        btnRepeat.title = t('repeatTitle');
+        btnPlay.title = t('playPauseTitle');
+        volumeIcon.title = t('volumeTitle');
+        btnSpeed.title = t('speedTitle');
+        btnPrev.title = t('prevTitle');
+        btnNext.title = t('nextTitle');
+        themeToggle.title = t('themeTitle');
+        langToggle.title = t('langTitle');
+        colorToggle.title = t('colorTitle');
+        document.getElementById('colorPickerLabel').textContent = t('colorPickerLabel');
+        renderPlaylist();
+    }
+
+    function setupEventListeners() {
+        langToggle.addEventListener('click', (e) => {
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            const rect = langToggle.getBoundingClientRect();
+            ripple.style.left = `${e.clientX-rect.left}px`;
+            ripple.style.top = `${e.clientY-rect.top}px`;
+            langToggle.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+            toggleLanguage();
+        });
+        themeToggle.addEventListener('click', () => {
+    toggleTheme();
+});
+        colorToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            colorPanel.classList.toggle('open');
+        });
+        document.addEventListener('click', (e) => {
+            if (!colorPanel.contains(e.target) && e.target !== colorToggle) colorPanel.classList.remove('open');
+        });
+        colorSwatches.addEventListener('click', (e) => {
+            const swatch = e.target.closest('.color-swatch');
+            if (swatch) {
+                const color = swatch.dataset.color;
+                setCustomColor(color);
+                customColorInput.value = color;
+            }
+        });
+        customColorInput.addEventListener('input', (e) => setCustomColor(e.target.value));
+
+        scrollToPlayer.addEventListener('click', () => playerSection.scrollIntoView({ behavior: 'smooth' }));
+        btnPlay.addEventListener('click', () => {
+            if (!audioContext) initAudioContext();
+            togglePlay();
+        });
+        btnNext.addEventListener('click', () => playNext(true));
+        btnPrev.addEventListener('click', playPrev);
+        btnShuffle.addEventListener('click', () => {
+            state.isShuffle = !state.isShuffle;
+            state.shufflePlayed = [];
+            if (state.currentIndex >= 0) state.shufflePlayed.push(state.tracks[state.currentIndex].id);
+            updateShuffleButton();
+            try { localStorage.setItem('alireza1001_shuffle', state.isShuffle); } catch (e) {}
+            showToast(state.isShuffle ? t('toastShuffleOn') : t('toastShuffleOff'), 'info');
+        });
+        btnRepeat.addEventListener('click', () => {
+            state.repeatMode = (state.repeatMode + 1) % 3;
+            updateRepeatButton();
+            try { localStorage.setItem('alireza1001_repeat', state.repeatMode); } catch (e) {}
+            if (state.repeatMode === 0) showToast(t('toastRepeatOff'), 'info');
+            else if (state.repeatMode === 1) showToast(t('toastRepeatOn'), 'info');
+            else showToast(t('toastRepeatOne'), 'info');
+        });
+
+        const speedOptions = [0.5, 0.75, 1, 1.25, 1.5, 2];
+        let speedIndex = speedOptions.indexOf(state.playbackRate);
+        if (speedIndex === -1) speedIndex = 2;
+        btnSpeed.addEventListener('click', () => {
+            speedIndex = (speedIndex + 1) % speedOptions.length;
+            state.playbackRate = speedOptions[speedIndex];
+            audioPlayer.playbackRate = state.playbackRate;
+            speedLabel.textContent = `${state.playbackRate}x`;
+            try { localStorage.setItem('alireza1001_rate', state.playbackRate); } catch (e) {}
+            showToast(`${t('speedToast')}: ${state.playbackRate}x`, 'info');
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                addTracks(e.target.files);
+                e.target.value = '';
+            }
+        });
+        uploadLabel.addEventListener('dragover', (e) => { e.preventDefault(); uploadLabel.classList.add('drag-over'); });
+        uploadLabel.addEventListener('dragleave', () => uploadLabel.classList.remove('drag-over'));
+        uploadLabel.addEventListener('drop', (e) => {
     e.preventDefault();
+    e.stopPropagation();
+
     dragCounter = 0;
     dropOverlay.classList.remove('active');
+    uploadLabel.classList.remove('drag-over');
+
     if (e.dataTransfer.files.length > 0) {
         addTracks(e.dataTransfer.files);
     }
 });
-                progressWrapper.addEventListener('click', (e) => {
-                    const rect = progressWrapper.getBoundingClientRect();
-                    const isRTL = document.body.dir === 'rtl';
-                    let x = e.clientX - rect.left;
-                    if (isRTL) x = rect.width - x;
-                    const pct = Math.max(0, Math.min(1, x / rect.width));
-                    audioPlayer.currentTime = pct * (audioPlayer.duration || 0);
-                    state.currentTime = audioPlayer.currentTime;
-                    updateProgressUI();
-                });
-                volumeSlider.addEventListener('click', (e) => {
-                    const rect = volumeSlider.getBoundingClientRect();
-                    const isRTL = document.body.dir === 'rtl';
-                    let x = e.clientX - rect.left;
-                    if (isRTL) x = rect.width - x;
-                    state.volume = Math.max(0, Math.min(1, x / rect.width));
-                    updateVolumeUI();
-                    showToast(`${t('toastVolume')} ${Math.round(state.volume * 100)}%`, 'info');
-                });
-                volumeIcon.addEventListener('click', () => { state.volume = state.volume > 0 ? 0 : 1.0;
-                    updateVolumeUI();
-                    showToast(`${t('toastVolume')} ${Math.round(state.volume*100)}%`, 'info'); });
-                audioPlayer.addEventListener('timeupdate', () => {
-                    state.currentTime = audioPlayer.currentTime;
-                    updateProgressUI();
-                    if (state.currentIndex >= 0) try { localStorage.setItem('alireza1001_saved_time', state.currentTime);
-                            localStorage.setItem('alireza1001_saved_index', state.currentIndex); } catch (e) {}
-                });
-                audioPlayer.addEventListener('loadedmetadata', () => {
-                    if (state.currentIndex >= 0 && state.tracks[state.currentIndex]) state.tracks[state.currentIndex]
-                        .duration = audioPlayer.duration;
-                    updateProgressUI();
-                    renderPlaylist();
-                });
-                audioPlayer.addEventListener('ended', () => { if (state.isRepeat) { audioPlayer.currentTime = 0;
-                        audioPlayer.play().catch(() => {}); } else playNext(); });
-                audioPlayer.addEventListener('play', () => { state.isPlaying = true;
-                    updatePlayButton();
-                    startVisualizerLoop(); });
-                audioPlayer.addEventListener('pause', () => { state.isPlaying = false;
-                    updatePlayButton();
-                    stopVisualizerLoop(); });
-                window.addEventListener('scroll', () => { if (window.scrollY > 50) header.classList.add('scrolled');
-                    else header.classList.remove('scrolled'); });
-                document.addEventListener('keydown', (e) => {
-                    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-                    switch (e.key.toLowerCase()) {
-                        case ' ':
-                            e.preventDefault();
-                            togglePlay();
-                            break;
-                        case 'arrowright':
-                            if (document.body.dir === 'rtl') playPrev();
-                            else playNext();
-                            break;
-                        case 'arrowleft':
-                            if (document.body.dir === 'rtl') playNext();
-                            else playPrev();
-                            break;
-                        case 'm':
-                            state.volume = state.volume > 0 ? 0 : 1.0;
-                            updateVolumeUI();
-                            break;
-                    }
-                });
-            }
 
-            async function init() {
-                buildVisualizerBars(24);
-                createParticles();
-                let savedTheme = 'light',
-                    savedLang = 'fa',
-                    savedColor = '#427aeb';
+        playerCard.addEventListener('dragenter', (e) => {
+            e.preventDefault();
+            dragCounter++;
+            dropOverlay.classList.add('active');
+        });
+        playerCard.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dragCounter = Math.max(0, dragCounter - 1);
+            if (dragCounter === 0) dropOverlay.classList.remove('active');
+        });
+        playerCard.addEventListener('dragover', (e) => { e.preventDefault(); });
+        playerCard.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dragCounter = 0;
+            dropOverlay.classList.remove('active');
+            if (e.dataTransfer.files.length > 0) addTracks(e.dataTransfer.files);
+        });
+
+        progressWrapper.addEventListener('click', (e) => {
+            const rect = progressWrapper.getBoundingClientRect();
+            const isRTL = document.body.dir === 'rtl';
+            let x = e.clientX - rect.left;
+            if (isRTL) x = rect.width - x;
+            const pct = Math.max(0, Math.min(1, x / rect.width));
+            audioPlayer.currentTime = pct * (audioPlayer.duration || 0);
+            state.currentTime = audioPlayer.currentTime;
+            updateProgressUI();
+        });
+        progressWrapper.addEventListener('keydown', (e) => {
+    const duration = Number.isFinite(audioPlayer.duration) ? audioPlayer.duration : 0;
+    if (duration <= 0) return;
+
+    let newTime = audioPlayer.currentTime;
+
+    if (e.key === 'ArrowRight') {
+        newTime += 5;
+    } else if (e.key === 'ArrowLeft') {
+        newTime -= 5;
+    } else if (e.key === 'Home') {
+        newTime = 0;
+    } else if (e.key === 'End') {
+        newTime = duration;
+    } else {
+        return;
+    }
+
+    e.preventDefault();
+
+    newTime = Math.max(0, Math.min(duration, newTime));
+    audioPlayer.currentTime = newTime;
+    state.currentTime = newTime;
+    updateProgressUI();
+});
+        volumeSlider.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        let newVolume = state.volume;
+        const step = 0.05; // ۵٪
+        if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
+            newVolume = Math.min(1, state.volume + step);
+        } else {
+            newVolume = Math.max(0, state.volume - step);
+        }
+        state.volume = newVolume;
+        state.lastVolume = newVolume;
+        updateVolumeUI();
+        try { localStorage.setItem('alireza1001_volume', state.volume); } catch (e) {}
+        showToast(`${t('toastVolume')} ${Math.round(state.volume * 100)}%`, 'info');
+    }
+});
+volumeSlider.addEventListener('click', (e) => {
+    const rect = volumeSlider.getBoundingClientRect();
+    const isRTL = document.body.dir === 'rtl';
+    let x = e.clientX - rect.left;
+    if (isRTL) x = rect.width - x;
+    state.volume = Math.max(0, Math.min(1, x / rect.width));
+    state.lastVolume = state.volume;
+    updateVolumeUI();
+    try { localStorage.setItem('alireza1001_volume', state.volume); } catch (e) {}
+    showToast(`${t('toastVolume')} ${Math.round(state.volume * 100)}%`, 'info');
+});
+        volumeIcon.addEventListener('click', () => {
+    if (state.volume > 0) {
+        state.lastVolume = state.volume;
+        state.volume = 0;
+    } else {
+        state.volume = (state.lastVolume > 0) ? state.lastVolume : 0.5;
+    }
+    updateVolumeUI();
+    try { localStorage.setItem('alireza1001_volume', state.volume); } catch (e) {}
+    showToast(`${t('toastVolume')} ${Math.round(state.volume * 100)}%`, 'info');
+});
+        audioPlayer.addEventListener('timeupdate', () => {
+            state.currentTime = audioPlayer.currentTime;
+            updateProgressUI();
+            if (state.currentIndex >= 0) {
                 try {
-                    savedTheme = localStorage.getItem('alireza1001_theme_firoozei') || 'light';
-                    savedLang = localStorage.getItem('alireza1001_lang_firoozei') || 'fa';
-                    savedColor = localStorage.getItem('alireza1001_custom_color_firoozei') || '#427aeb';
+                    localStorage.setItem('alireza1001_saved_track_id', state.tracks[state.currentIndex].id);
+                    localStorage.setItem('alireza1001_saved_time', state.currentTime);
                 } catch (e) {}
-                setTheme(savedTheme);
-                setLanguage(savedLang);
-                setCustomColor(savedColor);
-                customColorInput.value = savedColor;
-                updateVolumeUI();
-                updateProgressUI();
-                updateTrackInfo();
-                renderPlaylist();
-                progressFill.style.width = '0%';
-                setupEventListeners();
-                await loadPersistedTracks();
             }
-            init();
-            window.__playerState = state;
-        })();
+        });
+        audioPlayer.addEventListener('loadedmetadata', () => {
+            if (state.currentIndex >= 0 && state.tracks[state.currentIndex]) {
+                state.tracks[state.currentIndex].duration = audioPlayer.duration;
+            }
+            updateProgressUI();
+            renderPlaylist();
+        });
+        audioPlayer.addEventListener('ended', () => {
+            if (state.repeatMode === 2) {
+                audioPlayer.currentTime = 0;
+                audioPlayer.play().catch(() => {});
+            } else if (state.repeatMode === 1) {
+                playNext(true);
+            } else {
+                if (state.isShuffle) {
+                    if (state.shufflePlayed.length >= state.tracks.length) {
+                        stopPlayback();
+                        state.shufflePlayed = [];
+                    } else {
+                        playNext(false);
+                    }
+                } else {
+                    playNext(false);
+                }
+            }
+        });
+        audioPlayer.addEventListener('play', () => {
+            state.isPlaying = true;
+            updatePlayButton();
+            startVisualizerLoop();
+            if (state.currentIndex >= 0 && state.tracks[state.currentIndex]) {
+                updateDocumentTitle(state.tracks[state.currentIndex].name);
+            }
+        });
+        audioPlayer.addEventListener('pause', () => {
+            state.isPlaying = false;
+            updatePlayButton();
+            stopVisualizerLoop();
+            updateDocumentTitle(null);
+        });
+        audioPlayer.addEventListener('error', () => {
+            console.error('Audio error:', audioPlayer.error);
+            state.isPlaying = false;
+            updatePlayButton();
+            stopVisualizerLoop();
+            showToast('خطا در پخش فایل صوتی', 'error');
+        });
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON') return;
+            if (e.code === 'Space') {
+                e.preventDefault();
+                togglePlay();
+            } else if (e.code === 'ArrowRight') {
+                if (document.body.dir === 'rtl') playPrev();
+                else playNext(true);
+            } else if (e.code === 'ArrowLeft') {
+                if (document.body.dir === 'rtl') playNext(true);
+                else playPrev();
+            } else if (e.code === 'KeyM') {
+    if (state.volume > 0) {
+        state.lastVolume = state.volume;
+        state.volume = 0;
+    } else {
+        state.volume = (state.lastVolume > 0) ? state.lastVolume : 0.5;
+    }
+    updateVolumeUI();
+    try { localStorage.setItem('alireza1001_volume', state.volume); } catch (e) {}
+}
+        });
+        // Event delegation برای پلی‌لیست (فقط یک بار)
+            playlistItems.addEventListener('click', handlePlaylistClick);
+    }
+
+    function playTrack(index) {
+    if (index < 0 || index >= state.tracks.length) return;
+    if (!audioContext) initAudioContext();
+    state.currentIndex = index;
+    const track = state.tracks[index];
+    if (track.url) audioPlayer.src = track.url;
+    audioPlayer.playbackRate = state.playbackRate;
+    audioPlayer.play().then(() => {
+        state.isPlaying = true;
+        updatePlayButton();
+        updateTrackInfo();
+        updatePlaylistUI();
+        showToast(`${t('toastPlay')} ${track.name}`, 'info');
+        if (audioContext && analyser) startVisualizerLoop();
+        try {
+            localStorage.setItem('alireza1001_saved_track_id', track.id);
+            localStorage.setItem('alireza1001_saved_time', '0');
+        } catch (e) {}
+        if (state.isShuffle && !state.shufflePlayed.includes(track.id)) {
+            state.shufflePlayed.push(track.id);
+        }
+    }).catch(err => {
+        console.error('Play failed:', err);
+        state.isPlaying = false;
+        updatePlayButton();
+        showToast('خطا در پخش فایل', 'error');
+    });
+}
+
+    function togglePlay() {
+        if (state.tracks.length === 0) { showToast(t('toastNoTrack'), 'error'); return; }
+        if (state.currentIndex === -1) { playTrack(0); return; }
+        if (audioPlayer.paused) {
+            audioPlayer.play().then(() => {
+                state.isPlaying = true;
+                updatePlayButton();
+                if (state.currentIndex >= 0 && state.tracks[state.currentIndex]) {
+                    updateDocumentTitle(state.tracks[state.currentIndex].name);
+                }
+                showToast(`${t('toastPlay')} ${state.tracks[state.currentIndex].name}`, 'info');
+                startVisualizerLoop();
+            }).catch(() => {
+                state.isPlaying = false;
+                updatePlayButton();
+                showToast('خطا در پخش', 'error');
+            });
+        } else {
+            audioPlayer.pause();
+            state.isPlaying = false;
+            updatePlayButton();
+            stopVisualizerLoop();
+            updateDocumentTitle(null);
+            showToast(t('toastPause'), 'info');
+        }
+    }
+
+    function playNext(loop = true) {
+        if (state.tracks.length === 0) return;
+        if (state.isShuffle) {
+            if (state.shufflePlayed.length >= state.tracks.length) {
+                if (loop) {
+                    state.shufflePlayed = [];
+                } else {
+                    stopPlayback();
+                    return;
+                }
+            }
+            let nextId;
+            do {
+                const nextIndex = Math.floor(Math.random() * state.tracks.length);
+                nextId = state.tracks[nextIndex].id;
+            } while (state.shufflePlayed.includes(nextId));
+
+            const nextIndex = state.tracks.findIndex(t => t.id === nextId);
+            playTrack(nextIndex);
+        } else {
+            if (!loop && state.currentIndex >= state.tracks.length - 1) {
+                stopPlayback();
+                return;
+            }
+            const next = (state.currentIndex + 1) % state.tracks.length;
+            playTrack(next);
+        }
+    }
+
+    function playPrev() {
+        if (state.tracks.length === 0) return;
+        if (state.currentTime > 3) { audioPlayer.currentTime = 0; return; }
+        if (state.isShuffle) {
+            if (state.shufflePlayed.length > 1) {
+                state.shufflePlayed.pop();
+                const prevId = state.shufflePlayed[state.shufflePlayed.length - 1];
+                const prevIndex = state.tracks.findIndex(t => t.id === prevId);
+                if (prevIndex !== -1) playTrack(prevIndex);
+            } else {
+                playTrack(state.currentIndex);
+            }
+        } else {
+            const prev = (state.currentIndex - 1 + state.tracks.length) % state.tracks.length;
+            playTrack(prev);
+        }
+    }
+
+    function stopPlayback() {
+        audioPlayer.pause();
+        state.isPlaying = false;
+        updatePlayButton();
+        stopVisualizerLoop();
+        updateDocumentTitle(null);
+    }
+
+    function updateShuffleButton() {
+        btnShuffle.style.background = state.isShuffle ? 'var(--primary)' : 'var(--bg-secondary)';
+        btnShuffle.style.color = state.isShuffle ? '#fff' : 'var(--text-secondary)';
+        btnShuffle.style.borderColor = state.isShuffle ? 'var(--primary)' : 'var(--border)';
+        btnShuffle.setAttribute('aria-pressed', state.isShuffle);
+    }
+
+    function updateRepeatButton() {
+        const active = state.repeatMode !== 0;
+        btnRepeat.style.background = active ? 'var(--primary)' : 'var(--bg-secondary)';
+        btnRepeat.style.color = active ? '#fff' : 'var(--text-secondary)';
+        btnRepeat.style.borderColor = active ? 'var(--primary)' : 'var(--border)';
+        let icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>';
+        if (state.repeatMode === 2) {
+            icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/><text x="12" y="16" font-size="8" text-anchor="middle" fill="#fff">1</text></svg>';
+        }
+        btnRepeat.innerHTML = icon;
+        btnRepeat.setAttribute('aria-pressed', active);
+    }
+
+    async function init() {
+        buildVisualizerBars(24);
+        createParticles();
+        let savedTheme = 'light', savedLang = 'fa', savedColor = '#427aeb';
+
+try {
+    const storedTheme = localStorage.getItem('alireza1001_theme_firoozei');
+    savedTheme = storedTheme === 'light' || storedTheme === 'dark'
+        ? storedTheme
+        : 'light';
+
+    const storedLang = localStorage.getItem('alireza1001_lang_firoozei');
+    savedLang = storedLang === 'fa' || storedLang === 'en'
+        ? storedLang
+        : 'fa';
+
+    const storedColor = localStorage.getItem('alireza1001_custom_color_firoozei');
+    savedColor = /^#[0-9a-f]{6}$/i.test(storedColor || '')
+        ? storedColor
+        : '#427aeb';
+} catch (e) {
+    savedTheme = 'light';
+    savedLang = 'fa';
+    savedColor = '#427aeb';
+}
+        setTheme(savedTheme);
+        setLanguage(savedLang);
+        setCustomColor(savedColor);
+        customColorInput.value = savedColor;
+        updateVolumeUI();
+        updateProgressUI();
+        updateTrackInfo();
+        renderPlaylist();
+        progressFill.style.width = '0%';
+        setupEventListeners();
+        await loadPersistedTracks();
+    }
+    init();
+    window.__playerState = state;
+})();
     </script>
 </body>
 </html>
